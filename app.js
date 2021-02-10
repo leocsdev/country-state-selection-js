@@ -688,7 +688,8 @@ s_a[251] =
 s_a[252] =
   "Bulawayo|Harare|ManicalandMashonaland Central|Mashonaland East|Mashonaland West|Masvingo|Matabeleland North|Matabeleland South|Midlands";
 
-var countryCode = [
+// Country Codes
+let countryCode = [
   { country: "Afghanistan", code: "+93" },
   { country: "Albania", code: "+355" },
   { country: "Algeria", code: "+213" },
@@ -942,65 +943,59 @@ var countryCode = [
   { country: "Zimbabwe", code: "+263" },
 ];
 
-// call function to populate coutry dropdown
+// Populate country dropdown
 populateCountryDropdown("country", country_arr);
 
 // Change the state dropdown list and country code whenever a country is selected
 document.getElementById("country").addEventListener("change", function () {
-  // select state dropdown and clear all options
+  // Clear state dropdown
   document.getElementById("state").innerHTML = `
     <option value="-1">Select State</option>
   `;
-  // call function to populate state dropdown
+  // Populate state dropdown
   populateStateDropdown("country", "state");
 
-  // select country code and clear the value
+  // Clear country code value
   document.getElementById("country-code").value = "";
-  // call function to populate country code
-  populateCountryCode("country", "country-code");
+  // Get country code value
+  getCountryCode("country", "country-code");
 });
 
-// Populate contry dropdown
 function populateCountryDropdown(countryElementId, countryArray) {
-  // target contry dropdown DOM
+  // Grab country dropdown DOM
   const countryDropdown = document.getElementById(countryElementId);
+
   // Populate country dropdown
   countryArray.forEach((country) => {
-    // select each country from the array and add <option> tag for each
     countryDropdown.innerHTML += `
       <option value="${country}">${country}</option>
     `;
   });
 }
 
-// Once country dropdown is selected:
-// - Populate Country Code based on country selected
-function populateCountryCode(countryElementId, countryCodeElementId) {
+function getCountryCode(countryElementId, countryCodeElementId) {
   // Grab DOMs
   const selectedCountry = document.getElementById(countryElementId).value;
   const countryCodeDisplay = document.getElementById(countryCodeElementId);
 
-  // Grab country code array
+  // Get code of selected country
   let countryCodeValue = countryCode.filter((country) => {
     if (country.country === selectedCountry) return country;
   });
 
-  // console.log(countryCodeValue[0].code);
+  // Render code in country code text field
   countryCodeDisplay.value = countryCodeValue[0].code;
-  // countryCodeDisplay.value = "ASDF";
 }
 
-// Once country dropdown is selected:
-// - Populate the state dropdown based on the country selected
 function populateStateDropdown(countryElementId, stateElementId) {
-  // Select the index selected in Country dropdown
+  // Get the index selected in Country dropdown
   let selectedCountryIndex = document.getElementById(countryElementId)
     .selectedIndex;
 
-  // target state dropdown DOM
+  // Target state dropdown DOM
   let stateDropdown = document.getElementById(stateElementId);
 
-  // grab selected country state and save in array
+  // Get selected country state
   stateArray = s_a[selectedCountryIndex].split("|");
 
   // Populate state dropdown
