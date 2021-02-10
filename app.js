@@ -8,7 +8,7 @@ let country_arr = [
   "American Samoa",
   "Angola",
   "Anguilla",
-  "Antartica",
+  "Antarctica",
   "Antigua and Barbuda",
   "Argentina",
   "Armenia",
@@ -269,7 +269,7 @@ s_a[4] = "Eastern|Manu'a|Rose Island|Swains Island|Western";
 s_a[5] =
   "Andorra la Vella|Bengo|Benguela|Bie|Cabinda|Canillo|Cuando Cubango|Cuanza Norte|Cuanza Sul|Cunene|Encamp|Escaldes-Engordany|Huambo|Huila|La Massana|Luanda|Lunda Norte|Lunda Sul|Malanje|Moxico|Namibe|Ordino|Sant Julia de Loria|Uige|Zaire";
 s_a[6] = "Anguilla";
-s_a[7] = "Antartica";
+s_a[7] = "Antarctica";
 s_a[8] =
   "Barbuda|Redonda|Saint George|Saint John|Saint Mary|Saint Paul|Saint Peter|Saint Philip";
 s_a[9] =
