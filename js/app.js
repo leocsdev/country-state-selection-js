@@ -4,16 +4,12 @@
 populateCountryDropdown("country", country_arr);
 
 // Change the state dropdown list and country code whenever a country is selected
-document.getElementById("country").addEventListener("change", function () {
-  // Clear state dropdown
-  document.getElementById("state").innerHTML = `
-    <option value="-1">Select State</option>
-  `;
+document.getElementById("country").addEventListener("change", function (e) {
+  console.log(`Country changed to: ${e.target.value}`);
+
   // Populate state dropdown
   populateStateDropdown("country", "state");
 
-  // Clear country code value
-  document.getElementById("country-code").value = "";
   // Get country code value
   getCountryCode("country", "country-code");
 });
@@ -35,6 +31,9 @@ function getCountryCode(countryElementId, countryCodeElementId) {
   const selectedCountry = document.getElementById(countryElementId).value;
   const countryCodeDisplay = document.getElementById(countryCodeElementId);
 
+  // Clear country code value
+  countryCodeDisplay.value = "";
+
   // Get code of selected country
   let countryCodeValue = countryCode.filter((country) => {
     if (country.country === selectedCountry) return country;
@@ -51,6 +50,11 @@ function populateStateDropdown(countryElementId, stateElementId) {
 
   // Target state dropdown DOM
   let stateDropdown = document.getElementById(stateElementId);
+
+  // Clear state dropdown
+  stateDropdown.innerHTML = `
+    <option value="-1">Select State</option>
+  `;
 
   // Get selected country state
   stateArray = s_a[selectedCountryIndex].split("|");
